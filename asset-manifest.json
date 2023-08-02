@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/TimGibbs.github.io/tight-angling/static/css/main.073c9b0a.css",
-    "main.js": "/TimGibbs.github.io/tight-angling/static/js/main.f1b6639a.js",
-    "static/media/logo.svg": "/TimGibbs.github.io/tight-angling/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/TimGibbs.github.io/tight-angling/static/css/main.964fdded.css",
+    "main.js": "/TimGibbs.github.io/tight-angling/static/js/main.0b816a40.js",
     "index.html": "/TimGibbs.github.io/tight-angling/index.html",
-    "main.073c9b0a.css.map": "/TimGibbs.github.io/tight-angling/static/css/main.073c9b0a.css.map",
-    "main.f1b6639a.js.map": "/TimGibbs.github.io/tight-angling/static/js/main.f1b6639a.js.map"
+    "main.964fdded.css.map": "/TimGibbs.github.io/tight-angling/static/css/main.964fdded.css.map",
+    "main.0b816a40.js.map": "/TimGibbs.github.io/tight-angling/static/js/main.0b816a40.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.f1b6639a.js"
+    "static/css/main.964fdded.css",
+    "static/js/main.0b816a40.js"
   ]
 }
