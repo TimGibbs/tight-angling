@@ -1,5 +1,7 @@
+import { Fish } from "./Fish";
+
 export type RegionValues = {
-    fish: string;
+    fish: Fish;
     boatLb: number;
     boatKg: number;
     shoreLb: number;
