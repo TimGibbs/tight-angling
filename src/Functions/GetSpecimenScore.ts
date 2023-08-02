@@ -1,7 +1,7 @@
 import { Fish, Region } from "../Types/Types";
 
 
-export function GetSpecimenValue(fish : Fish, region : Region) : number {
+export function GetSpecimenScore(fish : Fish, region : Region) : number {
 
     const values = region.values.find(f=>f.fishType === fish.fishType);
 
