@@ -1,26 +1,50 @@
 import { useState } from "react"
-import { Form } from "react-bootstrap"
+import { Button, Form } from "react-bootstrap"
+import AnglerComponent from "../Components/AnglerComponent"
 import RegionB from "../Data/RegionB"
+import { scoreFish } from "../Functions/scoreFish"
 import useRegions from "../Hooks/useRegions"
-import { Competition, Region } from "../Types/Types"
+import { Competition, Fish } from "../Types/Types"
 
 export default function CompetitionPage() {
 
     const [competition, setCompetition] = useState<Competition>({ name:"Example", region: RegionB, limitations: {maxFish:10, maxSpecies: 5, perSpecies:3}, anglers:[]  })
+    console.log(competition)
+
+    const Comp = ({competition} : {competition : Competition }) => {
+        return <div>
+            <h2>{competition.name}</h2>
+            <h6>{competition.region.name}</h6>
+            <h4>Anglers</h4>
+            {competition.anglers.map(o=><AnglerComponent angler={o}/>)}
+            <Button onClick={()=>{
+                const s = addAngler(competition,"ABC");
+                setCompetition({...s})}
+                }>AddAngler</Button>
+        </div>
+    } 
+    
     return <div>
         
         {!competition && <NewComp/>}
         {competition && <Comp competition={competition}/>}
     </div>
+
+
+}
+
+function addAngler(competition : Competition, angler : string) : Competition {
+    competition.anglers = [...competition.anglers, {name:angler, fish:[]}]
+    return competition;
+}
+
+function addFish(competition : Competition, fish : Fish) : Competition {
+    const scored = scoreFish(fish,competition.region);
+    competition.anglers.find(o=>o.name===fish.angler)?.fish.push(scored);
+    return competition
 }
 
 
-const Comp = ({competition} : {competition : Competition }) => {
-    return <div>
-        <h2>{competition.name}</h2>
-        <h3>{competition.region.name}</h3>
-    </div>
-} 
 
 function NewComp() {
     const regions = useRegions();

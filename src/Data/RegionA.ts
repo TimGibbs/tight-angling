@@ -1,5 +1,4 @@
 import { Region } from "../Types/Region";
-import { RegionValues } from "../Types/RegionValues";
 
 const RegionA : Region = {
         name : "Cornwall",
