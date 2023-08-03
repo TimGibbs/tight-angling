@@ -30,7 +30,6 @@ export const AddFishModal = ({angler, show, onClose, competition, setCompetition
         </Form.Select>    
         {units==="Metric" && <>
             <Form.Control type='number' onChange={e=> setFishWeightKg(parseFloat(e.target.value))} placeholder='kg' min={0} ></Form.Control>
-    
         </>}
         {units==="Imperial" && <>
             <Form.Control type='number' onChange={e=> setFishWeightLb(parseFloat(e.target.value))} placeholder='lb' min={0}></Form.Control>
