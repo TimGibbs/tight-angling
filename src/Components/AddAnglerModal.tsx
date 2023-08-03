@@ -13,8 +13,7 @@ export const AddAnglerModel = ({show,onClose, competition, setCompetition} : {sh
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={()=>{
-                        const s = addAngler(competition,anglerName);
-                        setCompetition({...s})
+                        setCompetition({...competition, anglers:[...competition.anglers, {name:anglerName, fish:[]}]})
                         onClose();
                         setAnglerName('');
                     }
@@ -24,7 +23,3 @@ export const AddAnglerModel = ({show,onClose, competition, setCompetition} : {sh
             </Modal>
 }
 
-function addAngler(competition : Competition, angler : string) : Competition {
-    competition.anglers = [...competition.anglers, {name:angler, fish:[]}]
-    return competition;
-}
