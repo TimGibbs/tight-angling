@@ -1,9 +1,13 @@
-import { Angler, Fish, Region, Limitations } from "../Types/Types";
+import { Angler, Limitations } from "../Types/Types";
+import { maxFishFilter, maxSpeciesFilter, perSpeciesFilter } from "./scoreFilters";
 
+export function getAnglerScore(angler : Angler, limitations : Limitations) : number {
 
-export function GetAnglerScore(angler : Angler, region : Region, limitations : Limitations) : number {
+    let fish = angler.fish;
+    fish = perSpeciesFilter(fish, limitations.perSpecies);
+    fish = maxSpeciesFilter(fish, limitations.maxSpecies);
+    fish = maxFishFilter(fish, limitations.maxFish);
 
-    
-
-    return 0;
+    return fish.reduce((a,b) => a+b.score, 0);
 }
+

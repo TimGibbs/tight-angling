@@ -1,7 +1,7 @@
 export type Limitations = {
-    MaxFish : number | null,
-    MaxSpecies : number | null,
-    PerSpecies : number | null,
+    maxFish : number | null,
+    maxSpecies : number | null,
+    perSpecies : number | null,
 }
 
 export {};

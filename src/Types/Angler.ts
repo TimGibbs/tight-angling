@@ -1,8 +1,6 @@
-import { Fish } from "./Fish";
+import { ScoredFish } from "./Fish";
 
 export type Angler  = {
     name : string
-    Fish : Fish[]
+    fish : ScoredFish[]
  };
-
- export {};
