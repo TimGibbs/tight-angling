@@ -6,7 +6,7 @@ export function scoreFish(fish : Fish, region : Region) : ScoredFish {
 
     if(!values) return {...fish, score:0};
 
-    if(fish.units === "kg"){
+    if(fish.units === "Metric"){
         if(fish.location === "Boat"){
             return {...fish, score:Math.round((fish.weightKg / values.boatKg) * 100)};
         }
@@ -14,7 +14,7 @@ export function scoreFish(fish : Fish, region : Region) : ScoredFish {
             return {...fish, score:Math.round((fish.weightKg / values.shoreKg) * 100)};
         }
     }
-    if(fish.units === "lb"){
+    if(fish.units === "Imperial"){
         const val = fish.weightLb + fish.weightOz/16
         if(fish.location === "Boat"){
             return {...fish, score:Math.round((val / values.boatLb) * 100)};

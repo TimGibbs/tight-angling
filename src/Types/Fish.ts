@@ -1,4 +1,3 @@
-import { type } from "os";
 import { FishType } from "./FishType";
 
 export type Fish = {
@@ -9,9 +8,9 @@ export type Fish = {
     {
         weightLb : number,
         weightOz : number,
-        units : "lb"
+        units : "Imperial"
     } | {
         weightKg : number,
-        units : "kg"
+        units : "Metric"
     })
 export type ScoredFish = Fish & { score:number}

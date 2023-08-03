@@ -1,14 +1,15 @@
 import { useState } from "react"
-import { Button, Form } from "react-bootstrap"
+import { Button, Form, Modal } from "react-bootstrap"
 import AnglerComponent from "../Components/AnglerComponent"
 import RegionB from "../Data/RegionB"
-import { scoreFish } from "../Functions/scoreFish"
 import useRegions from "../Hooks/useRegions"
-import { Competition, Fish } from "../Types/Types"
+import { Competition } from "../Types/Types"
 
 export default function CompetitionPage() {
 
-    const [competition, setCompetition] = useState<Competition>({ name:"Example", region: RegionB, limitations: {maxFish:10, maxSpecies: 5, perSpecies:3}, anglers:[]  })
+    const [showAnglerModal, setShowAnglerModal] = useState<boolean>(false);
+    const [anglerName, setAnglerName] = useState<string>('');
+    const [competition, setCompetition] = useState<Competition>({ name:"Example", region: RegionB, isShore:true, limitations: {maxFish:10, maxSpecies: 5, perSpecies:3}, anglers:[]  })
     console.log(competition)
 
     const Comp = ({competition} : {competition : Competition }) => {
@@ -16,11 +17,8 @@ export default function CompetitionPage() {
             <h2>{competition.name}</h2>
             <h6>{competition.region.name}</h6>
             <h4>Anglers</h4>
-            {competition.anglers.map(o=><AnglerComponent angler={o}/>)}
-            <Button onClick={()=>{
-                const s = addAngler(competition,"ABC");
-                setCompetition({...s})}
-                }>AddAngler</Button>
+            {competition.anglers.map(o=><AnglerComponent angler={o} competition={competition} setCompetition={setCompetition}/>)}
+            <Button onClick={()=>setShowAnglerModal(true)}>+</Button>
         </div>
     } 
     
@@ -28,6 +26,23 @@ export default function CompetitionPage() {
         
         {!competition && <NewComp/>}
         {competition && <Comp competition={competition}/>}
+
+        <Modal show={showAnglerModal} backdrop='static' >
+            <Modal.Header>Add Angler</Modal.Header>
+            <Modal.Body>
+                <Form.Control type='text' onChange={(e)=>setAnglerName(e.target.value)} value={anglerName} placeholder='Name'></Form.Control>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={()=>{
+                    const s = addAngler(competition,anglerName);
+                    setCompetition({...s})
+                    setShowAnglerModal(false);
+                    setAnglerName('');
+                }
+            }>Add</Button>
+                <Button onClick={()=> {setShowAnglerModal(false); setAnglerName('');}} >Cancel</Button>
+            </Modal.Footer>
+        </Modal>
     </div>
 
 
@@ -38,11 +53,6 @@ function addAngler(competition : Competition, angler : string) : Competition {
     return competition;
 }
 
-function addFish(competition : Competition, fish : Fish) : Competition {
-    const scored = scoreFish(fish,competition.region);
-    competition.anglers.find(o=>o.name===fish.angler)?.fish.push(scored);
-    return competition
-}
 
 
 
