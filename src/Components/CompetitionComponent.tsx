@@ -1,16 +1,25 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap"
-import { Competition } from "../Types/Types"
+import { Button, Form } from "react-bootstrap"
+import { useCompetition } from "../Context/CompetitionContext";
+import { Regions } from "../Data/Regions";
 import { AddAnglerModel } from "./AddAnglerModal";
 import AnglerComponent from "./AnglerComponent"
 
-export const CompetitionComponent = ({competition, setCompetition} : {competition : Competition, setCompetition:(competition:Competition)=>void }) => {
+export const CompetitionComponent = () => {
     const [showAnglerModal, setShowAnglerModal] = useState<boolean>(false);
+    const [competition, setCompetition] = useCompetition();
+    console.log(competition);
     return <div>
-        <h2>{competition.name}</h2>
-        <h6>{competition.region.name}</h6>
+        <Form.Control type='text' onChange={(e)=>setCompetition({...competition, name:e.target.value})} value={competition.name} placeholder='Example'></Form.Control>
+        <Form.Select onChange={(e)=>{
+                var r = Regions.find(o=>o.letter === e.target.value)
+                if(!!r) { setCompetition({...competition, region: r})}    
+            }}
+                value = {competition.region.letter}>
+            {Regions.map((o,i)=><option key={o.letter} value={o.letter}>{o.name}</option>)}
+        </Form.Select>  
         <h4>Anglers</h4>
-        {competition.anglers.map(o=><AnglerComponent angler={o} competition={competition} setCompetition={setCompetition}/>)}
+        {competition.anglers.map((o,i)=><AnglerComponent key={'angler'+1} angler={o}/>)}
         <Button onClick={()=>setShowAnglerModal(true)}>+</Button>
 
         <AddAnglerModel show={showAnglerModal} onClose={()=>setShowAnglerModal(false)} competition={competition} setCompetition={setCompetition} />

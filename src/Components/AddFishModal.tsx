@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap"
+import { useCompetition } from "../Context/CompetitionContext";
 import { scoreFish } from "../Functions/scoreFish";
 import { FishType, fishTypesArray, isFishType } from "../Types/FishType";
 import { Angler, Fish, Competition } from "../Types/Types";
 import { isUnit, Unit, unitsArray } from "../Types/Units"
 
-export const AddFishModal = ({angler, show, onClose, competition, setCompetition}: {angler:Angler, show:boolean, onClose:()=>void, competition:Competition, setCompetition:(competition:Competition)=>void}) => {
+export const AddFishModal = ({angler, show, onClose}: {angler:Angler, show:boolean, onClose:()=>void}) => {
     const [fishType, setFishType] = useState<FishType>('ANGLER FISH');
     const [fishWeightKg, setFishWeightKg] = useState<number>(0)
     const [fishWeightLb, setFishWeightLb] = useState<number>(0)
     const [fishWeightOz, setFishWeightOz] = useState<number>(0)
     const [units, setUnits] = useState<Unit>('Imperial')
+    const [competition, setCompetition] = useCompetition();
     return <Modal show={show} backdrop='static' >
     <Modal.Header>Add Fish</Modal.Header>
     <Modal.Body>
@@ -19,14 +21,14 @@ export const AddFishModal = ({angler, show, onClose, competition, setCompetition
                     setFishType(e.target.value)
                 }}} 
                 value={fishType}>
-            {fishTypesArray.map(o=><option value={o}>{o}</option>)}
+            {fishTypesArray.map(o=><option key={o} value={o}>{o}</option>)}
         </Form.Select>
         <Form.Select onChange={(e)=>{
                 if(isUnit(e.target.value)){
                     setUnits(e.target.value)
                 }}}
                 value = {units}>
-            {unitsArray.map(o=><option value={o}>{o}</option>)}
+            {unitsArray.map(o=><option key={o} value={o}>{o}</option>)}
         </Form.Select>    
         {units==="Metric" && <>
             <Form.Control type='number' onChange={e=> setFishWeightKg(parseFloat(e.target.value))} placeholder='kg' min={0} ></Form.Control>

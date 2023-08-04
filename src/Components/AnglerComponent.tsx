@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { Accordion, Button } from "react-bootstrap";
+import { useCompetition } from "../Context/CompetitionContext";
 import { getAnglerScore } from "../Functions/getAnglerScore";
-import { Angler, Competition } from "../Types/Types"
+import { Angler } from "../Types/Types"
 import { AddFishModal } from "./AddFishModal";
 import FishComponent from "./FishComponent";
 
-const AnglerComponent = ({angler, competition, setCompetition}: {angler :Angler, competition : Competition, setCompetition : (comp:Competition)=>void}) =>{
+const AnglerComponent = ({angler}: {angler :Angler}) =>{
     const [showFishModal, setShowFishModal] = useState<boolean>(false);
-
-
+    const [competition] = useCompetition();
     return <>
     <Accordion>
             <Accordion.Header>{angler.name} - {getAnglerScore(angler, competition.limitations)}</Accordion.Header>
             <Accordion.Body>
-                {angler.fish.map(f=><FishComponent fish={f}/>)}
+                {angler.fish.map((f,i)=><FishComponent key={angler.name + 'fish'+i} fish={f}/>)}
                 <Button onClick={()=>setShowFishModal(true)}>AddFish</Button>
             </Accordion.Body>
         </Accordion>
 
-    <AddFishModal angler={angler} show={showFishModal} onClose={()=>setShowFishModal(false)} competition={competition} setCompetition={setCompetition}/>
+    <AddFishModal angler={angler} show={showFishModal} onClose={()=>setShowFishModal(false)}/>
 </>
 }
 
