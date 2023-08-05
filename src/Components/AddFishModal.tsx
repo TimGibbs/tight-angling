@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap"
+import { useFishModal } from "../Context/AddFishModelContext";
 import { useCompetition } from "../Context/CompetitionContext";
 import { FishType, fishTypesArray, isFishType } from "../Types/FishType";
-import { Angler, Fish, Competition } from "../Types/Types";
+import { Fish, Competition } from "../Types/Types";
 import { isUnit, Unit, unitsArray } from "../Types/Units"
 
-export const AddFishModal = ({angler, show, onClose}: {angler:Angler, show:boolean, onClose:()=>void}) => {
+export const AddFishModal = () => {
+    const fishModalOptions = useFishModal()
+
     const [fishType, setFishType] = useState<FishType>('ANGLER FISH');
     const [fishWeightKg, setFishWeightKg] = useState<number>(0)
     const [fishWeightLb, setFishWeightLb] = useState<number>(0)
     const [fishWeightOz, setFishWeightOz] = useState<number>(0)
     const [units, setUnits] = useState<Unit>('Imperial')
     const [competition, setCompetition] = useCompetition();
-    return <Modal show={show} backdrop='static' >
+    return <Modal show={fishModalOptions.show} backdrop='static' >
     <Modal.Header>Add Fish</Modal.Header>
     <Modal.Body>
         <Form.Select onChange={(e)=>{
@@ -40,15 +43,15 @@ export const AddFishModal = ({angler, show, onClose}: {angler:Angler, show:boole
     <Modal.Footer>
         <Button onClick={()=>{
             const fish : Fish = units === "Metric" 
-            ? {fishType:fishType, units:'Metric', weightKg:fishWeightKg, location:competition.isShore ? "Shore" : "Boat", angler: angler.name} 
-            : {fishType:fishType, units:'Imperial', weightLb:fishWeightLb, weightOz:fishWeightOz, location:competition.isShore ? "Shore" : "Boat", angler: angler.name}
+            ? {fishType:fishType, units:'Metric', weightKg:fishWeightKg, location:competition.isShore ? "Shore" : "Boat", angler: fishModalOptions.anglerName} 
+            : {fishType:fishType, units:'Imperial', weightLb:fishWeightLb, weightOz:fishWeightOz, location:competition.isShore ? "Shore" : "Boat", angler: fishModalOptions.anglerName}
             const s = addFish(competition,fish);
             setCompetition({...s})
-            onClose();
+            fishModalOptions.hideModal();
             setFishType('ANGLER FISH');
         }
     }>Add</Button>
-        <Button onClick={()=> {onClose(); setFishType('ANGLER FISH');}} >Cancel</Button>
+        <Button onClick={()=> {fishModalOptions.hideModal(); setFishType('ANGLER FISH');}} >Cancel</Button>
     </Modal.Footer>
     </Modal>
 }

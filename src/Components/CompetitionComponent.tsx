@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap"
+import { useAnglerModal } from "../Context/AddAnglerModalContext";
 import { useCompetition } from "../Context/CompetitionContext";
 import { Regions } from "../Data/Regions";
 import { Region } from "../Types/Types";
-import { AddAnglerModel } from "./AddAnglerModal";
 import AnglerComponent from "./AnglerComponent"
 
 export const CompetitionComponent = () => {
-    const [showAnglerModal, setShowAnglerModal] = useState<boolean>(false);
+    const x = useAnglerModal()
     const [competition, setCompetition] = useCompetition();
     //<Form.Control type='text' onChange={(e)=>setCompetition({...competition, name:e.target.value})} value={competition.name} placeholder='Example'></Form.Control>
 
@@ -24,8 +23,6 @@ export const CompetitionComponent = () => {
         </Form.Select>  
         <h4>Anglers</h4>
         {competition.anglers.map((o,i)=><AnglerComponent key={'angler'+i} angler={o}/>)}
-        <Button onClick={()=>setShowAnglerModal(true)}>+</Button>
-
-        <AddAnglerModel show={showAnglerModal} onClose={()=>setShowAnglerModal(false)} competition={competition} setCompetition={setCompetition} />
+        <Button onClick={()=>x.showModal()}>+</Button>
     </Container>
 } 

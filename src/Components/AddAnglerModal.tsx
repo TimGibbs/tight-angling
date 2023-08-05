@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { Competition } from "../Types/Types";
+import { useAnglerModal } from "../Context/AddAnglerModalContext";
+import { useCompetition } from "../Context/CompetitionContext";
 
-export const AddAnglerModel = ({show,onClose, competition, setCompetition} : {show:boolean, onClose:()=>void, competition:Competition, setCompetition:(competition:Competition)=>void}) => {
+export const AddAnglerModel = () => {
     const [anglerName, setAnglerName] = useState<string>('');
-    
+    const [competition, setCompetition] = useCompetition();
+    const x = useAnglerModal()
 
-    return <Modal show={show} backdrop='static' >
+    return <Modal show={x.show} backdrop='static' >
                 <Modal.Header>Add Angler</Modal.Header>
                 <Modal.Body>
                     <Form.Control type='text' onChange={(e)=>setAnglerName(e.target.value)} value={anglerName} placeholder='Name'></Form.Control>
@@ -14,11 +16,11 @@ export const AddAnglerModel = ({show,onClose, competition, setCompetition} : {sh
                 <Modal.Footer>
                     <Button onClick={()=>{
                         setCompetition({...competition, anglers:[...competition.anglers, {name:anglerName, fish:[]}]})
-                        onClose();
+                        x.hideModal()
                         setAnglerName('');
                     }
                 }>Add</Button>
-                    <Button onClick={()=> {onClose(); setAnglerName('');}} >Cancel</Button>
+                    <Button onClick={()=> {x.hideModal(); setAnglerName('');}} >Cancel</Button>
                 </Modal.Footer>
             </Modal>
 }
