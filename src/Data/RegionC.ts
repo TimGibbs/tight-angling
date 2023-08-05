@@ -4,6 +4,7 @@ const RegionC : Region = {
         name : "South Devon",
         letter : "C",
         values : [
+            {fishType: "ANGLER FISH",boatLb: 17, boatKg: 7.711, shoreLb: 17, shoreKg: 7.711},
             {fishType: "BASS",boatLb: 6, boatKg: 2.721, shoreLb: 5.8, shoreKg: 2.495},
             {fishType: "BREAM - Black",boatLb: 2.8, boatKg: 1.134, shoreLb: 1.12, shoreKg: 0.794},
             {fishType: "BREAM - Gilthead",boatLb: 3.8, boatKg: 1.588, shoreLb: 3.4, shoreKg: 1.474},
