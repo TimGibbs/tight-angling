@@ -11,7 +11,7 @@ const AnglerComponent = ({angler}: {angler :Angler}) =>{
     const [competition] = useCompetition();
     return <>
     <Accordion>
-            <Accordion.Header>{angler.name} - {getAnglerScore(angler, competition.limitations)}</Accordion.Header>
+            <Accordion.Header>{angler.name} - {getAnglerScore(angler, competition.limitations, competition.region)}</Accordion.Header>
             <Accordion.Body>
                 {angler.fish.map((f,i)=><FishComponent key={angler.name + 'fish'+i} fish={f}/>)}
                 <Button onClick={()=>setShowFishModal(true)}>AddFish</Button>
