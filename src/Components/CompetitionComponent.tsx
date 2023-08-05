@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap"
 import { useCompetition } from "../Context/CompetitionContext";
 import { Regions } from "../Data/Regions";
-import { scoreFish } from "../Functions/scoreFish";
-import { Angler, Region } from "../Types/Types";
+import { Region } from "../Types/Types";
 import { AddAnglerModel } from "./AddAnglerModal";
 import AnglerComponent from "./AnglerComponent"
 
@@ -13,9 +12,7 @@ export const CompetitionComponent = () => {
     //<Form.Control type='text' onChange={(e)=>setCompetition({...competition, name:e.target.value})} value={competition.name} placeholder='Example'></Form.Control>
 
     function onChangeRegion(region: Region){
-        var anglers = [...competition.anglers];
-        var g : Angler[] = anglers.map(o=> ({...o, fish: o.fish.map(f=>scoreFish(f,region))}))
-        setCompetition({...competition, region: region, anglers:g})
+        setCompetition({...competition, region: region})
     } 
 
     return <Container>

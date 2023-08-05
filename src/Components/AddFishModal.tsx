@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap"
 import { useCompetition } from "../Context/CompetitionContext";
-import { scoreFish } from "../Functions/scoreFish";
 import { FishType, fishTypesArray, isFishType } from "../Types/FishType";
 import { Angler, Fish, Competition } from "../Types/Types";
 import { isUnit, Unit, unitsArray } from "../Types/Units"
@@ -56,7 +55,6 @@ export const AddFishModal = ({angler, show, onClose}: {angler:Angler, show:boole
 
 
 function addFish(competition : Competition, fish : Fish) : Competition {
-    const scored = scoreFish(fish,competition.region);
-    competition.anglers.find(o=>o.name===fish.angler)?.fish.push(scored);
+    competition.anglers.find(o=>o.name===fish.angler)?.fish.push(fish);
     return competition
 }

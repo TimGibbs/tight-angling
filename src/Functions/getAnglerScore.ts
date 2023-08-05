@@ -1,9 +1,10 @@
-import { Angler, Limitations } from "../Types/Types";
+import { Angler, Limitations, Region, ScoredFish } from "../Types/Types";
 import { maxFishFilter, maxSpeciesFilter, perSpeciesFilter } from "./scoreFilters";
+import { scoreFish } from "./scoreFish";
 
-export function getAnglerScore(angler : Angler, limitations : Limitations) : number {
+export function getAnglerScore(angler : Angler, limitations : Limitations, region:Region) : number {
 
-    let fish = angler.fish;
+    let fish : ScoredFish[] = angler.fish.map(o=>({...o, score:scoreFish(o,region)}));
     fish = perSpeciesFilter(fish, limitations.perSpecies);
     fish = maxSpeciesFilter(fish, limitations.maxSpecies);
     fish = maxFishFilter(fish, limitations.maxFish);
