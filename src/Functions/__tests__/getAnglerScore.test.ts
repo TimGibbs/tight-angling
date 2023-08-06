@@ -1,5 +1,5 @@
-import { getAnglerScore } from './getAnglerScore'; // Update the import path with the correct file path
-import { Angler, Limitations, Region, ScoredFish } from '../Types/Types'; // Update the import path with the correct file path for the types
+import { getAnglerScore } from '../getAnglerScore'; 
+import { Angler, Limitations, Region, ScoredFish } from '../../Types/Types'; 
 
 // Mock region values for testing
 const mockRegion: Region = {

@@ -1,5 +1,5 @@
-import { maxFishFilter } from './maxFishFilter'; // Update the import path with the correct file path
-import { ScoredFish } from '../Types/Types'; // Update the import path with the correct file path for the types
+import { maxFishFilter } from '../maxFishFilter'; 
+import { ScoredFish } from '../../Types/Types'; 
 
 describe('maxFishFilter', () => {
   it('should return the original fish array when maxFish is null', () => {

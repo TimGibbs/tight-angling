@@ -3,8 +3,10 @@ import RegionA from "./RegionA"
 import RegionB from "./RegionB"
 import RegionC from "./RegionC"
 
-export const Regions : Region[] = [
+const Regions : Region[] = [
     RegionA,
     RegionB,
     RegionC
 ]
+
+export {Regions}

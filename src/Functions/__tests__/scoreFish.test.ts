@@ -1,5 +1,5 @@
-import { scoreFish } from './scoreFish'; // Update the import path with the correct file path
-import { Fish, Region, RegionValues } from '../Types/Types'; // Update the import path with the correct file path for the types
+import { scoreFish } from '../scoreFish'; 
+import { Fish, Region, RegionValues } from '../../Types/Types'; 
 
 describe('scoreFish', () => {
   const mockRegion: Region = {
