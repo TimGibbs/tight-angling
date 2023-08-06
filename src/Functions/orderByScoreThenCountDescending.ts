@@ -1,12 +1,16 @@
-
 export interface ScoreAndCount {
-    score: number, 
-    count: number,
-}
-
-export function orderByScoreThenCountDescending(a: ScoreAndCount, b: ScoreAndCount): number {
-    if (a.score !== b.score) {
-        return b.score - a.score;
+    score: number;
+    count: number;
+  }
+  
+  export const orderByScoreThenCountDescending = (a: ScoreAndCount, b: ScoreAndCount): number => {
+    const { score: scoreA, count: countA } = a;
+    const { score: scoreB, count: countB } = b;
+  
+    if (scoreA !== scoreB) {
+      return scoreB - scoreA;
     }
-    return b.count - a.count;
-}
+  
+    return countB - countA;
+  };
+  

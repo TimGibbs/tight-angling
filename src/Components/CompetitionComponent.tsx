@@ -2,8 +2,8 @@ import { Container, Form } from "react-bootstrap"
 import { useCompetition } from "../Context/CompetitionContext";
 import { Regions } from "../Data/Regions";
 import { Region } from "../Types/Types";
-import { AnglersComponent } from "./AnglersComponent";
-import { LimitationsComponenet } from "./LimitationsComponent";
+import AnglersComponent from "./AnglersComponent";
+import LimitationsComponenet from "./LimitationsComponent";
 
 export const CompetitionComponent = () => {
     const [competition, setCompetition] = useCompetition();
