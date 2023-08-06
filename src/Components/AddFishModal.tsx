@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap"
+import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap"
 import { useFishModal } from "../Context/AddFishModelContext";
 import { useCompetition } from "../Context/CompetitionContext";
 import { FishType, fishTypesArray, isFishType } from "../Types/FishType";
@@ -18,27 +18,40 @@ export const AddFishModal = () => {
     return <Modal show={fishModalOptions.show} backdrop='static' >
     <Modal.Header>Add Fish</Modal.Header>
     <Modal.Body>
-        <Form.Select onChange={(e)=>{
-                if(isFishType(e.target.value)){
-                    setFishType(e.target.value)
-                }}} 
-                value={fishType}>
-            {fishTypesArray.map(o=><option key={o} value={o}>{o}</option>)}
-        </Form.Select>
-        <Form.Select onChange={(e)=>{
-                if(isUnit(e.target.value)){
-                    setUnits(e.target.value)
-                }}}
-                value = {units}>
-            {unitsArray.map(o=><option key={o} value={o}>{o}</option>)}
-        </Form.Select>    
-        {units==="Metric" && <>
-            <Form.Control type='number' onChange={e=> setFishWeightKg(parseFloat(e.target.value))} placeholder='kg' min={0} ></Form.Control>
-        </>}
-        {units==="Imperial" && <>
-            <Form.Control type='number' onChange={e=> setFishWeightLb(parseFloat(e.target.value))} placeholder='lb' min={0}></Form.Control>
-            <Form.Control type='number' onChange={e=> setFishWeightOz(parseFloat(e.target.value))} placeholder='oz' min={0} max={16}></Form.Control>
-        </>}
+        <Container>
+            <Row>
+                <Form.Select onChange={(e)=>{
+                    if(isFishType(e.target.value)){
+                        setFishType(e.target.value)
+                    }}} 
+                    value={fishType}>
+                    {fishTypesArray.map(o=><option key={o} value={o}>{o}</option>)}
+                </Form.Select>
+            </Row>
+            <Row>
+                <Form.Select onChange={(e)=>{
+                    if(isUnit(e.target.value)){
+                        setUnits(e.target.value)
+                    }}}
+                    value = {units}>
+                    {unitsArray.map(o=><option key={o} value={o}>{o}</option>)}
+                </Form.Select>
+            </Row>
+            
+            {units==="Metric" &&
+            <Row>
+                <Form.Control type='number' onChange={e=> setFishWeightKg(parseFloat(e.target.value))} placeholder='kg' min={0} ></Form.Control>
+            </Row>}
+            {units==="Imperial" &&
+            <Row>
+                <Col>
+                    <Form.Control type='number' onChange={e=> setFishWeightLb(parseFloat(e.target.value))} placeholder='lb' min={0}></Form.Control>
+                </Col>
+                <Col>
+                    <Form.Control type='number' onChange={e=> setFishWeightOz(parseFloat(e.target.value))} placeholder='oz' min={0} max={16}></Form.Control>
+                </Col>
+            </Row>}
+        </Container>
     </Modal.Body>
     <Modal.Footer>
         <Button onClick={()=>{
