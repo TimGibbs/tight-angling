@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
-import { BestAngler } from "./BestAngler";
-import { BestFish } from "./BestFish";
+import BestAngler from "./BestAngler";
+import BestFish from "./BestFish";
 import { BestPerSpecies } from "./BestPerSpecies";
 
 export const ResultsComponent = () => {

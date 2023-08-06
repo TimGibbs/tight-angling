@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { AddAnglerModel } from '../Components/AddAnglerModal';
+import AddAnglerModel from '../Components/AddAnglerModal';
 
 const AddAnglerModalContext = createContext<{
     show:boolean,
