@@ -1,13 +1,11 @@
-import { Button, Container, Form } from "react-bootstrap"
-import { useAnglerModal } from "../Context/AddAnglerModalContext";
+import { Container, Form } from "react-bootstrap"
 import { useCompetition } from "../Context/CompetitionContext";
 import { Regions } from "../Data/Regions";
 import { Region } from "../Types/Types";
-import AnglerComponent from "./AnglerComponent"
-import { LimitationsComponenet } from "./LimitationsComponenet";
+import { AnglersComponent } from "./AnglersComponent";
+import { LimitationsComponenet } from "./LimitationsComponent";
 
 export const CompetitionComponent = () => {
-    const x = useAnglerModal()
     const [competition, setCompetition] = useCompetition();
     //<Form.Control type='text' onChange={(e)=>setCompetition({...competition, name:e.target.value})} value={competition.name} placeholder='Example'></Form.Control>
 
@@ -24,9 +22,8 @@ export const CompetitionComponent = () => {
             {Regions.map((o,i)=><option key={o.letter} value={o.letter}>{o.name}</option>)}
         </Form.Select>
         <LimitationsComponenet/>
-        <h4>Anglers</h4>
-        {competition.anglers.map((o,i)=><AnglerComponent key={'angler'+i} angler={o}/>)}
-        <Button onClick={()=>x.showModal()}>+</Button>
+        <AnglersComponent/>
     </Container>
 } 
+
 
