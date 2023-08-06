@@ -11,9 +11,10 @@ export default function CompetitionPage() {
     var doHorizontal = viewport.width>=viewport.height
     return <div>
         <CompetitionProvider>
+        <AddAnglerModalProvider>
+        <AddFishModalProvider>
             {doHorizontal && 
-            <AddAnglerModalProvider>
-                <AddFishModalProvider>
+            
                     <Container>
                         <Row>
                             <Col>
@@ -23,9 +24,7 @@ export default function CompetitionPage() {
                                 <ResultsComponent/>
                             </Col>
                         </Row>
-                    </Container>
-                </AddFishModalProvider>
-            </AddAnglerModalProvider>}
+                    </Container>}
             {!doHorizontal &&
                 <Container>
                     <CompetitionComponent/>
@@ -33,6 +32,8 @@ export default function CompetitionPage() {
                 </Container>
             }
 
+        </AddFishModalProvider>
+        </AddAnglerModalProvider>
         </CompetitionProvider>
     </div>
 
