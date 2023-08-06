@@ -40,15 +40,15 @@ export const AddFishModal = () => {
             
             {units==="Metric" &&
             <Row>
-                <Form.Control type='number' onChange={e=> setFishWeightKg(parseFloat(e.target.value))} placeholder='kg' min={0} ></Form.Control>
+                <Form.Control type='number' onChange={e=> setFishWeightKg(parseFloat(e.target.value))} placeholder='kg' min={0} />
             </Row>}
             {units==="Imperial" &&
             <Row>
                 <Col>
-                    <Form.Control type='number' onChange={e=> setFishWeightLb(parseFloat(e.target.value))} placeholder='lb' min={0}></Form.Control>
+                    <Form.Control type='number' onChange={e=> setFishWeightLb(parseFloat(e.target.value))} placeholder='lb' min={0} />
                 </Col>
                 <Col>
-                    <Form.Control type='number' onChange={e=> setFishWeightOz(parseFloat(e.target.value))} placeholder='oz' min={0} max={16}></Form.Control>
+                    <Form.Control type='number' onChange={e=> setFishWeightOz(parseFloat(e.target.value))} placeholder='oz' min={0} max={16} />
                 </Col>
             </Row>}
         </Container>
