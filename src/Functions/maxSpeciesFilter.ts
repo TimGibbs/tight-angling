@@ -12,5 +12,7 @@ export function maxSpeciesFilter(fish: ScoredFish[], maxSpecies: number | null):
     }
     scores = scores.sort((a, b) => b.value - a.value).slice(0, maxSpecies);
     scores.forEach(b => ret = [...ret, ...grouped[b.key]]);
-    return ret;
+    return ret.sort((a,b)=>{ const x = a.fishType.localeCompare(b.fishType)
+    if(x===0) return b.score-a.score;
+    return x});
 }

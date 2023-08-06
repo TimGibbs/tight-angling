@@ -10,5 +10,5 @@ export function perSpeciesFilter(fish: ScoredFish[], maxPerSpecies: number | nul
         const x = grouped[species].sort((a, b) => b.score - a.score).slice(0, maxPerSpecies);
         ret = [...ret, ...x];
     }
-    return ret;
+    return ret.sort((a,b)=>a.fishType.localeCompare(b.fishType));
 }
