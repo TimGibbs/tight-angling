@@ -14,7 +14,7 @@ export const CompetitionComponent = () => {
         setCompetition({...competition, region: region})
     } 
 
-    return <Container>
+    return <Container style={{paddingTop:"25px"}}>
         <Form.Select onChange={(e)=>{
                 var r = Regions.find(o=>o.letter === e.target.value);
                 if(r !== undefined) { onChangeRegion(r)}}}
