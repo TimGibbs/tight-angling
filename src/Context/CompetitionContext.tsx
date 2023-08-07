@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 import RegionA from '../Data/RegionA';
+import useLocalStorage from '../Hooks/useLocalStorage';
 import { Competition } from '../Types/Types';
 
 type CompetitionContextValue = [Competition, React.Dispatch<React.SetStateAction<Competition>>];
@@ -15,10 +16,10 @@ function CompetitionProvider({ children }: { children: React.ReactNode }) {
     anglers: [],
   };
 
-  const value = useState<Competition>(example);
+  const [competition, setCompetition] = useLocalStorage<Competition>('competitionData',example);
 
   return (
-    <CompetitionStateContext.Provider value={value}>
+    <CompetitionStateContext.Provider value={[competition, setCompetition]}>
       {children}
     </CompetitionStateContext.Provider>
   );
