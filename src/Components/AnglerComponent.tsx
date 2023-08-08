@@ -4,19 +4,30 @@ import { useCompetition } from "../Context/CompetitionContext";
 import { getAnglerScore } from "../Functions/getAnglerScore";
 import { Angler } from "../Types/Types";
 import FishComponent from "./FishComponent";
+import DeleteIcon from "../Images/delete"
+
 
 interface AnglerComponentProps {
   angler: Angler;
 }
 
 const AnglerComponent: React.FC<AnglerComponentProps> = ({ angler }) => {
-  const [competition] = useCompetition();
+  const [competition, setCompetition] = useCompetition();
   const fishModalOptions = useFishModal();
 
   return (
     <Accordion>
       <Accordion.Header>
-        {angler.name} - {getAnglerScore(angler, competition.limitations, competition.region)}
+        <Row>
+          <Col xs={8} style={{ fontWeight: "bold" }}>
+            {angler.name} - {getAnglerScore(angler, competition.limitations, competition.region)}
+          </Col>
+          <Col xs={4} style={{ textAlign: "right" }}>
+            <Button variant="danger" 
+            onClick={()=>setCompetition({...competition, anglers:competition.anglers.filter(o=>o!==angler)})}
+            style={{padding:"2px"}}><DeleteIcon/></Button>
+          </Col>
+        </Row>
       </Accordion.Header>
       <Accordion.Body>
         <Container>
