@@ -29,10 +29,10 @@ const AnglerComponent: React.FC<AnglerComponentProps> = ({ angler }) => {
           </Col>
         </Row>
       </Accordion.Header>
-      <Accordion.Body>
+      <Accordion.Body style={{padding:"0px"}}>
         <Container>
           <Row>
-            <Col xs={6} style={{ textAlign: "left", fontWeight: "bold" }}>
+            <Col xs={5} style={{ textAlign: "left", fontWeight: "bold" }}>
               Fish
             </Col>
             <Col xs={4} style={{ fontWeight: "bold" }}>
