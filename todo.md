@@ -1,5 +1,5 @@
 remove fish
-edit fish
+edit fish (in modal?)
 
 remove angler
 edit angler
