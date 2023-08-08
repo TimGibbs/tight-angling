@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/tight-angling/static/css/main.415c2551.css",
-    "main.js": "/tight-angling/static/js/main.28a2b604.js",
+    "main.js": "/tight-angling/static/js/main.ffe0cedc.js",
     "index.html": "/tight-angling/index.html",
     "main.415c2551.css.map": "/tight-angling/static/css/main.415c2551.css.map",
-    "main.28a2b604.js.map": "/tight-angling/static/js/main.28a2b604.js.map"
+    "main.ffe0cedc.js.map": "/tight-angling/static/js/main.ffe0cedc.js.map"
   },
   "entrypoints": [
     "static/css/main.415c2551.css",
-    "static/js/main.28a2b604.js"
+    "static/js/main.ffe0cedc.js"
   ]
 }
