@@ -10,7 +10,6 @@ const AnglersComponent = () => {
 
   return (
     <div style={{ paddingTop: "15px" }}>
-      <h4>Anglers</h4>
       {competition.anglers.map((angler, index) => (
         <AnglerComponent key={"angler" + index} angler={angler} />
       ))}
