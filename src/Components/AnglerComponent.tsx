@@ -20,16 +20,16 @@ const AnglerComponent: React.FC<AnglerComponentProps> = ({ angler }) => {
     <Card style={{marginBottom:"5px"}}>
         <Accordion>
         <Accordion.Header>
-            <Row>
-            <Col xs={8} style={{ fontWeight: "bold" }}>
-                {angler.name} - {getAnglerScore(angler, competition.limitations, competition.region)}
-            </Col>
-            <Col xs={4} style={{ textAlign: "right" }}>
+            <div style={{width:'100%', display:'flex', justifyContent:'center', textAlign:'left'}}>
                 <Button variant="danger" 
                 onClick={()=>setCompetition({...competition, anglers:competition.anglers.filter(o=>o!==angler)})}
-                style={{padding:"2px"}}><DeleteIcon stroke='white'/></Button>
-            </Col>
-            </Row>
+                style={{padding:"2px"}}>
+                    <DeleteIcon stroke='white'/>
+                </Button>
+                <h5 style={{ fontWeight: "bold", textAlign:'center', margin:'0 auto' }} >
+                    {angler.name} - {getAnglerScore(angler, competition.limitations, competition.region)}
+                </h5>
+            </div>
         </Accordion.Header>
         <Accordion.Body style={{padding:"0px"}}>
             <Container>
@@ -47,7 +47,9 @@ const AnglerComponent: React.FC<AnglerComponentProps> = ({ angler }) => {
             {angler.fish.map((fish, index) => (
                 <FishComponent key={`fish-${index}`} fish={fish} />
             ))}
-            <Button onClick={() => fishModalOptions.showModal(angler.name)}>+ <FishIcon/></Button>
+            <Button onClick={() => fishModalOptions.showModal(angler.name)}>
+                + <FishIcon/>
+            </Button>
             </Container>
         </Accordion.Body>
         </Accordion>

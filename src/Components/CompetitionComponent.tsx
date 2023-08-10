@@ -4,6 +4,8 @@ import { Regions } from "../Data/Regions";
 import { Region } from "../Types/Types";
 import AnglersComponent from "./AnglersComponent";
 import LimitationsComponenet from "./LimitationsComponent";
+import './CompetitionComponent.css'
+
 
 export const CompetitionComponent = () => {
     const [competition, setCompetition] = useCompetition();
@@ -13,7 +15,7 @@ export const CompetitionComponent = () => {
         setCompetition({...competition, region: region})
     } 
 
-    return <Container style={{paddingTop:"25px"}}>
+    return <Container className="competition">
         <Form.Select onChange={(e)=>{
                 var r = Regions.find(o=>o.letter === e.target.value);
                 if(r !== undefined) { onChangeRegion(r)}}}
