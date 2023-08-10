@@ -5,7 +5,7 @@ import { getAnglerScore } from "../Functions/getAnglerScore";
 import { Angler } from "../Types/Types";
 import FishComponent from "./FishComponent";
 import { ReactComponent as DeleteIcon} from "../Images/delete.svg"
-import { ReactComponent as FishIcon} from "../Images/fish.svg";
+import { ReactComponent as FishIcon} from "../Images/fish2.svg";
 
 
 interface AnglerComponentProps {
@@ -48,7 +48,7 @@ const AnglerComponent: React.FC<AnglerComponentProps> = ({ angler }) => {
                 <FishComponent key={`fish-${index}`} fish={fish} />
             ))}
             <Button onClick={() => fishModalOptions.showModal(angler.name)}>
-                + <FishIcon/>
+                + <FishIcon stroke="white" fill="white"/>
             </Button>
             </Container>
         </Accordion.Body>
