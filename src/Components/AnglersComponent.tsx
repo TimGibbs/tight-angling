@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { useAnglerModal } from "../Context/AddAnglerModalContext";
 import { useCompetition } from "../Context/CompetitionContext";
-import RodIcon from "../Images/rod";
+import { ReactComponent as RodIcon} from "../Images/rod.svg";
 import AnglerComponent from "./AnglerComponent";
 
 const AnglersComponent = () => {
@@ -14,7 +14,7 @@ const AnglersComponent = () => {
       {competition.anglers.map((angler, index) => (
         <AnglerComponent key={"angler" + index} angler={angler} />
       ))}
-      <Button onClick={() => x.showModal()}>+ <RodIcon/></Button>
+      <Button onClick={() => x.showModal()}>+ <RodIcon fill='white' stroke='white'/></Button>
     </div>
   );
 };
