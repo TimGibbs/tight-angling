@@ -4,8 +4,8 @@ import { useCompetition } from "../Context/CompetitionContext";
 import { getAnglerScore } from "../Functions/getAnglerScore";
 import { Angler } from "../Types/Types";
 import FishComponent from "./FishComponent";
-import DeleteIcon from "../Images/delete"
-import FishIcon from "../Images/fish";
+import { ReactComponent as DeleteIcon} from "../Images/delete.svg"
+import { ReactComponent as FishIcon} from "../Images/fish.svg";
 
 
 interface AnglerComponentProps {
@@ -27,7 +27,7 @@ const AnglerComponent: React.FC<AnglerComponentProps> = ({ angler }) => {
             <Col xs={4} style={{ textAlign: "right" }}>
                 <Button variant="danger" 
                 onClick={()=>setCompetition({...competition, anglers:competition.anglers.filter(o=>o!==angler)})}
-                style={{padding:"2px"}}><DeleteIcon/></Button>
+                style={{padding:"2px"}}><DeleteIcon stroke='white'/></Button>
             </Col>
             </Row>
         </Accordion.Header>

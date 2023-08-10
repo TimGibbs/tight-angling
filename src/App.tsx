@@ -2,12 +2,20 @@ import React from 'react';
 import './App.css';
 import CompetitionPage from './Pages/CompetitionPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
+import { Container, Navbar } from 'react-bootstrap';
+import  { ReactComponent as Fishing} from './Images/fishing.svg';
 function App() {
-  return (
-    <Container className="App">
-      <CompetitionPage/>
-    </Container>
+  return ( 
+    <>
+       <Navbar bg="dark" data-bs-theme="dark" style={{justifyContent:'center'}}>
+          <Navbar.Brand><Fishing fill='white' stroke='white'/> Tight Angling</Navbar.Brand>
+        </Navbar>
+        <Container className="App">
+       
+        <CompetitionPage/>
+      </Container>
+    </>
+      
   );
 }
 
