@@ -1,5 +1,5 @@
-import { Container, Form } from "react-bootstrap"
-import { useCompetition } from "../Context/CompetitionContext";
+import { Button, Container, Form } from "react-bootstrap"
+import { defaultCompetition, useCompetition } from "../Context/CompetitionContext";
 import { Regions } from "../Data/Regions";
 import { Region } from "../Types/Types";
 import AnglersComponent from "./AnglersComponent";
@@ -16,6 +16,11 @@ export const CompetitionComponent = () => {
     } 
 
     return <Container className="competition">
+        <Button variant="danger" 
+                onClick={()=>setCompetition(defaultCompetition)}
+                style={{width:'100%'}}>
+                    RESET
+                </Button>
         <Form.Select onChange={(e)=>{
                 var r = Regions.find(o=>o.letter === e.target.value);
                 if(r !== undefined) { onChangeRegion(r)}}}

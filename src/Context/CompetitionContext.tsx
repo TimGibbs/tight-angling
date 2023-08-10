@@ -7,16 +7,17 @@ type CompetitionContextValue = [Competition, React.Dispatch<React.SetStateAction
 
 const CompetitionStateContext = createContext<CompetitionContextValue | undefined>(undefined);
 
-function CompetitionProvider({ children }: { children: React.ReactNode }) {
-  const example: Competition = {
-    name: "Example",
+const defaultCompetition : Competition = {
+  name: "Example",
     region: RegionA,
     isShore: true,
     limitations: { maxFish: 10, maxSpecies: 5, perSpecies: 3 },
     anglers: [],
-  };
+}
 
-  const [competition, setCompetition] = useLocalStorage<Competition>('competitionData',example);
+function CompetitionProvider({ children }: { children: React.ReactNode }) {
+
+  const [competition, setCompetition] = useLocalStorage<Competition>('competitionData',defaultCompetition);
 
   return (
     <CompetitionStateContext.Provider value={[competition, setCompetition]}>
@@ -35,4 +36,4 @@ function useCompetition(): CompetitionContextValue {
   return context;
 }
 
-export { CompetitionProvider, useCompetition };
+export { CompetitionProvider, useCompetition, defaultCompetition };
