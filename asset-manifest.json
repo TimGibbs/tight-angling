@@ -1,17 +1,18 @@
 {
   "files": {
     "main.css": "/tight-angling/static/css/main.9cc0f688.css",
-    "main.js": "/tight-angling/static/js/main.6caf356d.js",
+    "main.js": "/tight-angling/static/js/main.c6a1bf0a.js",
+    "service-worker.js": "/tight-angling/service-worker.js",
     "static/media/fishing.svg": "/tight-angling/static/media/fishing.eafe4e17381b9ce1a293417e872c6a90.svg",
     "static/media/fish2.svg": "/tight-angling/static/media/fish2.769ccb52ef41ad7299735359162f6543.svg",
     "static/media/rod.svg": "/tight-angling/static/media/rod.7a5454b70506e8b47ad156b380c9ac1c.svg",
     "index.html": "/tight-angling/index.html",
     "static/media/delete.svg": "/tight-angling/static/media/delete.adda8cbe909100ed941d196a00ef5cc3.svg",
     "main.9cc0f688.css.map": "/tight-angling/static/css/main.9cc0f688.css.map",
-    "main.6caf356d.js.map": "/tight-angling/static/js/main.6caf356d.js.map"
+    "main.c6a1bf0a.js.map": "/tight-angling/static/js/main.c6a1bf0a.js.map"
   },
   "entrypoints": [
     "static/css/main.9cc0f688.css",
-    "static/js/main.6caf356d.js"
+    "static/js/main.c6a1bf0a.js"
   ]
 }
