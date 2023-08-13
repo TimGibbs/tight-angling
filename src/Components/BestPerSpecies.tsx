@@ -1,4 +1,5 @@
-import { Col, Row } from "react-bootstrap";
+import React from "react";
+import { Table } from "react-bootstrap";
 import { useCompetition } from "../Context/CompetitionContext";
 import { groupBy } from "../Functions/groupBy";
 import { scoreFish } from "../Functions/scoreFish";
@@ -20,35 +21,32 @@ const BestPerSpecies = () => {
   const sortedBestPerSpecies = bestPerSpecies.sort((a, b) => a.fishType.localeCompare(b.fishType));
 
   return (
-    <div style={{ padding: "25px" }}>
-      <Row>
-        <h3>Best Per Species</h3>
-      </Row>
-      <Row>
-        <Col xs={3} style={{ fontWeight: "bold" }}>
-          Name
-        </Col>
-        <Col xs={6} style={{ fontWeight: "bold" }}>
-          Weight
-        </Col>
-        <Col xs={3} style={{ fontWeight: "bold" }}>
-          Score
-        </Col>
-      </Row>
-      {sortedBestPerSpecies.map((fish, index) => (
-        <div key={"bestPerSpecies" + index}>
-          <Row>
-            <h6>{fish.fishType}</h6>
-          </Row>
-          <Row>
-            <Col xs={3}>{fish.angler}</Col>
-            <Col xs={6}>
-              {fish.units === "Metric" ? `${fish.weightKg}kg` : `${fish.weightLb}lb ${fish.weightOz}oz`}
-            </Col>
-            <Col xs={3}>{fish.score}</Col>
-          </Row>
-        </div>
+    <div style={{ paddingTop: "25px" }}>
+      <h3>Best Per Species</h3>
+      <Table>
+        <thead>
+          <tr>
+          <th>Name</th>
+          <th>Weight</th>
+          <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+        {sortedBestPerSpecies.map((fish, index) => (
+          <React.Fragment key={'BestInSpecies' +index}>
+            <tr>
+              <th colSpan={3} >{fish.fishType}</th>
+            </tr>
+            <tr >
+              <td>{fish.angler}</td>
+              <td>{fish.units === "Metric" ? `${fish.weightKg}kg` : `${fish.weightLb}lb ${fish.weightOz}oz`}</td>
+              <td>{fish.score}</td>
+            </tr>
+          </React.Fragment>
       ))}
+        </tbody>
+      </Table>
+      
     </div>
   );
 };
