@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useCompetition } from "../Context/CompetitionContext";
 import { scoreFish } from "../Functions/scoreFish";
 import { ReactComponent as DeleteIcon} from "../Images/delete.svg";
@@ -22,22 +22,20 @@ const FishComponent: React.FC<FishComponentProps> = ({ fish }) => {
     }
 
   return (
-    <Row>
-      <Col xs={5} style={{ textAlign: "left" }}>
-        {fish.fishType}
-      </Col>
-      {fish.units === "Metric" ? (
-        <Col xs={4}>{fish.weightKg}kg</Col>
-      ) : (
-        <Col xs={4}>{fish.weightLb}lb {fish.weightOz}oz</Col>
-      )}
-      <Col xs={2}>{score}</Col>
-      <Col xs={1}>
-      <Button variant="danger" 
+    <tr>
+      <td>{fish.fishType}</td>
+      <td>
+      {fish.units === "Metric" 
+      ? fish.weightKg +'kg'
+      : `${fish.weightLb}lb ${fish.weightOz}oz`}
+      </td>
+      <td>{score}</td>
+      <td>
+        <Button variant="danger" 
             onClick={deleteFish}
             style={{padding:"2px"}}><DeleteIcon stroke='white'/></Button>
-      </Col>
-    </Row>
+      </td>
+    </tr>
   );
 };
 
