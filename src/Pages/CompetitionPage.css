@@ -1,0 +1,7 @@
+.competitionPage, .competitionPage > * {
+    height:95vh
+}
+
+.competitionPage .carousel-inner {
+    overflow-y: scroll;
+}

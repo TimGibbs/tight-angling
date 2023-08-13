@@ -1,6 +1,8 @@
 import { Col, Form, Row } from "react-bootstrap";
 import { useCompetition } from "../Context/CompetitionContext";
 
+import './LimitationsComponent.css'
+
 const LimitationsComponent = () => {
   const [competition, setCompetition] = useCompetition();
 
@@ -12,38 +14,35 @@ const LimitationsComponent = () => {
   };
 
   return (
-    <div style={{ paddingTop: "15px" }}>
+    <div className="limitationsComponent">
       <Row>
-        <Col style={{ fontWeight: "bold" }}>Max Fish</Col>
-        <Col style={{ fontWeight: "bold" }}>Max Species</Col>
-        <Col style={{ fontWeight: "bold" }}>Max Per Species</Col>
+        <Col className="header">Max Fish</Col>
+        <Col className="header" >Max Species</Col>
+        <Col className="header">Max Per Species</Col>
       </Row>
       <Row>
         <Col>
-          <Form.Control
+          <Form.Control className="picker"
             type="number"
             value={competition.limitations.maxFish?.toString() ?? ""}
             onChange={(e) => handleChange("maxFish", e.target.value)}
             min={0}
-            style={{ textAlign: "center" }}
           />
         </Col>
         <Col>
-          <Form.Control
+          <Form.Control className="picker"
             type="number"
             value={competition.limitations.maxSpecies?.toString() ?? ""}
             onChange={(e) => handleChange("maxSpecies", e.target.value)}
             min={0}
-            style={{ textAlign: "center" }}
           />
         </Col>
         <Col>
-          <Form.Control
+          <Form.Control className="picker"
             type="number"
             value={competition.limitations.perSpecies?.toString() ?? ""}
             onChange={(e) => handleChange("perSpecies", e.target.value)}
             min={0}
-            style={{ textAlign: "center" }}
           />
         </Col>
       </Row>

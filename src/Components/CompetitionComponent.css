@@ -1,4 +1,12 @@
-.competition {
+.competitionComponent {
         padding-top:25px;
+        height:95vh;
 }
 
+.competitionComponent .resetButton {
+        width: 100%;
+}
+
+.competitionComponent .regionPicker {
+        text-align: center;
+}
