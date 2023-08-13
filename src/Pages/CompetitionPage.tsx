@@ -1,10 +1,12 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Carousel, Col, Container, Row } from "react-bootstrap";
 import { CompetitionComponent } from "../Components/CompetitionComponent";
 import ResultsComponent from "../Components/ResultsComponent";
 import { AddAnglerModalProvider } from "../Context/AddAnglerModalContext";
 import { AddFishModalProvider } from "../Context/AddFishModelContext";
 import { CompetitionProvider } from "../Context/CompetitionContext";
 import useViewport from "../Hooks/useViewPort";
+import './CompetitionPage.css'
+
 
 export default function CompetitionPage() {
   const viewport = useViewport();
@@ -14,22 +16,28 @@ export default function CompetitionPage() {
     <CompetitionProvider>
       <AddAnglerModalProvider>
         <AddFishModalProvider>
-          <Container>
+          <div className="competitionPage" >
             {doHorizontal ? (
-              <Row>
-                <Col>
-                  <CompetitionComponent />
-                </Col>
-                <Col>
-                  <ResultsComponent />
-                </Col>
-              </Row>
-            ) : (<>
-                  <CompetitionComponent />
-                  <ResultsComponent />
-                </>
+              <Container>
+                <Row >
+                  <Col>
+                    <CompetitionComponent />
+                  </Col>
+                  <Col>
+                    <ResultsComponent />
+                  </Col>
+                </Row>
+              </Container>
+            ) : (<Carousel controls={true} indicators={false} interval={null} touch={true} variant={'dark'}>
+                  <Carousel.Item>
+                    <CompetitionComponent />
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <ResultsComponent />
+                  </Carousel.Item>
+                </Carousel>
             )}
-          </Container>
+          </div>
         </AddFishModalProvider>
       </AddAnglerModalProvider>
     </CompetitionProvider>

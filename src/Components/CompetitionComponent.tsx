@@ -9,23 +9,20 @@ import './CompetitionComponent.css'
 
 export const CompetitionComponent = () => {
     const [competition, setCompetition] = useCompetition();
-    //<Form.Control type='text' onChange={(e)=>setCompetition({...competition, name:e.target.value})} value={competition.name} placeholder='Example'></Form.Control>
 
     function onChangeRegion(region: Region){
         setCompetition({...competition, region: region})
     } 
 
-    return <Container className="competition">
-        <Button variant="danger" 
-                onClick={()=>setCompetition(defaultCompetition)}
-                style={{width:'100%'}}>
+    return <Container className="competitionComponent" >
+        <Button className="resetButton" variant="danger" 
+                onClick={()=>setCompetition(defaultCompetition)}>
                     RESET
                 </Button>
-        <Form.Select onChange={(e)=>{
+        <Form.Select className="regionPicker" onChange={(e)=>{
                 var r = Regions.find(o=>o.letter === e.target.value);
                 if(r !== undefined) { onChangeRegion(r)}}}
-                value = {competition.region.letter}
-                style={{ textAlign: "center" }} >
+                value = {competition.region.letter}>
             {Regions.map((o,i)=><option key={o.letter} value={o.letter}>{o.name}</option>)}
         </Form.Select>
         <LimitationsComponenet/>

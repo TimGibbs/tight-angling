@@ -1,0 +1,11 @@
+.limitationsComponent {
+    padding-top: 15px;
+}
+
+.limitationsComponent .header {
+    font-weight: bold;
+}
+
+.limitationsComponent .picker {
+    text-align: center;
+}
