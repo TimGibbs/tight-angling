@@ -28,7 +28,7 @@ export default function CompetitionPage() {
                   </Col>
                 </Row>
               </Container>
-            ) : (<Carousel controls={true} indicators={false} interval={null} touch={true} variant={'dark'}>
+            ) : (<Carousel controls={false} indicators={true} interval={null} touch={true} variant={'dark'}>
                   <Carousel.Item>
                     <CompetitionComponent />
                   </Carousel.Item>
