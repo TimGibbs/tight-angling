@@ -1,0 +1,13 @@
+name: CICD
+
+
+on: push
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  build-deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/build-deploy.yml
