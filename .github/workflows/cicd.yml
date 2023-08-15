@@ -2,15 +2,13 @@ name: CICD
 
 on: push
 
-defaults: &defaults
-  runs-on: ubuntu-latest
+jobs:
+  test:
+      runs-on: ubuntu-latest
   strategy:
     matrix:
       node-version: [16.x]
 
-jobs:
-  test:
-    <<: *defaults
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -25,7 +23,11 @@ jobs:
         run: npm test
 
   build:
-    <<: *defaults
+      runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      node-version: [16.x]
+
     needs: test
     if: github.ref == 'refs/heads/main'
     steps:
