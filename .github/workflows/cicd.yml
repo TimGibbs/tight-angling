@@ -2,10 +2,6 @@ name: CICD
 
 on: push
 
-env:
-  NODE_VERSION: 16.x
-  CACHE_DIR: 'npm'
-
 jobs:
   test:
     uses: ./.github/workflows/test.yml
