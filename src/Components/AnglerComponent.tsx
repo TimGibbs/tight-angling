@@ -7,7 +7,6 @@ import FishComponent from "./FishComponent";
 import { ReactComponent as DeleteIcon} from "../Images/delete.svg"
 import { ReactComponent as FishIcon} from "../Images/fish2.svg";
 
-
 interface AnglerComponentProps {
   angler: Angler;
 }
@@ -17,21 +16,20 @@ const AnglerComponent: React.FC<AnglerComponentProps> = ({ angler }) => {
   const fishModalOptions = useFishModal();
 
   return (
-    <Card style={{marginBottom:"5px"}}>
+    <Card className="anglerComponent">
         <Accordion>
         <Accordion.Header>
-            <div style={{width:'100%', display:'flex', justifyContent:'center', textAlign:'left'}}>
-                <Button variant="danger" 
-                onClick={()=>setCompetition({...competition, anglers:competition.anglers.filter(o=>o!==angler)})}
-                style={{padding:"2px"}}>
+            <div className="anglerComponentHeader">
+                <Button variant="danger" className="deleteButton"
+                onClick={()=>setCompetition({...competition, anglers:competition.anglers.filter(o=>o!==angler)})}>
                     <DeleteIcon stroke='white'/>
                 </Button>
-                <h5 style={{ fontWeight: "bold", textAlign:'center', margin:'0 auto' }} >
+                <h5 className="heading">
                     {angler.name} - {getAnglerScore(angler, competition.limitations, competition.region)}
                 </h5>
             </div>
         </Accordion.Header>
-        <Accordion.Body style={{padding:"0px"}}>
+        <Accordion.Body className="anglerComponentBody">
             <Table>
                 <thead>
                     <tr>

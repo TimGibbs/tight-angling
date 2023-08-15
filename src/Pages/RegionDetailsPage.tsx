@@ -4,17 +4,18 @@ import RegionA from "../Data/RegionA";
 import { Regions } from "../Data/Regions";
 import { Region } from "../Types/Types";
 
+import './RegionDetailsPage.css'
+
 export default function RegionDetailsPage() {
     const [region, setRegion] =useState<Region>(RegionA);
 
 return (
-    <Container>
-         <Form.Select onChange={(e)=>{
-                var r = Regions.find(o=>o.letter === e.target.value);
-                if(r !== undefined) { setRegion(r)}}}
-                value = {region.letter}
-                style={{ textAlign: "center" }} >
-            {Regions.map((o,i)=><option key={o.letter} value={o.letter}>{o.name}</option>)}
+    <Container className="regionDetailsPage">
+        <Form.Select className="regionSelector" onChange={(e)=>{
+            var r = Regions.find(o=>o.letter === e.target.value);
+            if(r !== undefined) { setRegion(r)}}}
+            value = {region.letter}>
+        {Regions.map((o,i)=><option key={o.letter} value={o.letter}>{o.name}</option>)}
         </Form.Select>
         <Table>
             <thead>
@@ -26,9 +27,9 @@ return (
                 <tr>
                     <th></th>
                     <th>Lb-Oz</th>
-                    <th>kg-gm</th>
+                    <th>kg</th>
                     <th>Lb-Oz</th>
-                    <th>kg-gm</th>
+                    <th>kg</th>
                 </tr>
             </thead>
             <tbody>
