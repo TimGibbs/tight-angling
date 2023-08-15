@@ -31,9 +31,10 @@ const FishComponent: React.FC<FishComponentProps> = ({ fish }) => {
       </td>
       <td>{score}</td>
       <td>
-        <Button variant="danger" 
-            onClick={deleteFish}
-            style={{padding:"2px"}}><DeleteIcon stroke='white'/></Button>
+        <Button variant="danger" className="deleteButton"
+            onClick={deleteFish}>
+              <DeleteIcon stroke='white'/>
+        </Button>
       </td>
     </tr>
   );

@@ -15,7 +15,7 @@ const BestAngler = () => {
     .sort(orderByScoreThenCountDescending);
 
   return (
-    <div style={{ paddingTop: "25px" }}>
+    <div className="resultObject">
         <h3>Best Angler</h3>
         <Table>
           <thead>

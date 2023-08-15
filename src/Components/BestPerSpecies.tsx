@@ -21,7 +21,7 @@ const BestPerSpecies = () => {
   const sortedBestPerSpecies = bestPerSpecies.sort((a, b) => a.fishType.localeCompare(b.fishType));
 
   return (
-    <div style={{ paddingTop: "25px" }}>
+    <div className="resultObject">
       <h3>Best Per Species</h3>
       <Table>
         <thead>

@@ -15,7 +15,7 @@ const BestFish = () => {
     .slice(0, 3);
 
   return (
-    <div style={{ paddingTop: "25px" }}>
+    <div className="resultObject">
         <h3>Best Fish</h3>
       <Table>
         <thead>

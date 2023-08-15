@@ -1,0 +1,28 @@
+.anglersComponent {
+    padding-top:15px ;
+}
+
+.anglersComponent .anglerComponent {
+    margin-bottom:5px;
+}
+
+.anglersComponent .anglerComponent .anglerComponentHeader {
+    width:100%;
+    display:flex;
+    justify-content:center; 
+    text-align:left;
+}
+
+.anglersComponent .anglerComponent .deleteButton {
+    padding:2px;
+}
+
+.anglersComponent .anglerComponent .anglerComponentHeader .heading {
+    font-weight: bold;
+    text-align:center;
+    margin:0 auto;
+}
+
+.anglersComponent .anglerComponent .anglerComponentBody {
+    padding: 0px;   
+}

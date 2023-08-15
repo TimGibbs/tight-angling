@@ -3,13 +3,15 @@ import { useAnglerModal } from "../Context/AddAnglerModalContext";
 import { useCompetition } from "../Context/CompetitionContext";
 import { ReactComponent as RodIcon} from "../Images/rod.svg";
 import AnglerComponent from "./AnglerComponent";
+import './AnglersComponent.css'
+
 
 const AnglersComponent = () => {
   const [competition] = useCompetition();
   const x = useAnglerModal();
 
   return (
-    <div style={{ paddingTop: "15px" }}>
+    <div className="anglersComponent">
       {competition.anglers.map((angler, index) => (
         <AnglerComponent key={"angler" + index} angler={angler} />
       ))}

@@ -1,3 +1,7 @@
 .resultsComponent {
     height: 95vh;
 }
+
+.resultsComponent .resultObject {
+    padding-top: 25px;
+}

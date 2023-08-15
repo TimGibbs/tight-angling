@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+import packageJson from '../package.json';
+global.appVersion = packageJson.version;
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
