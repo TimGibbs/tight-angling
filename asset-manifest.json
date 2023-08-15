@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tight-angling/static/css/main.2cf20aca.css",
-    "main.js": "/tight-angling/static/js/main.5a025d04.js",
+    "main.js": "/tight-angling/static/js/main.36904856.js",
     "service-worker.js": "/tight-angling/service-worker.js",
     "static/media/fishing.svg": "/tight-angling/static/media/fishing.eafe4e17381b9ce1a293417e872c6a90.svg",
     "static/media/fish2.svg": "/tight-angling/static/media/fish2.769ccb52ef41ad7299735359162f6543.svg",
@@ -9,10 +9,10 @@
     "index.html": "/tight-angling/index.html",
     "static/media/delete.svg": "/tight-angling/static/media/delete.adda8cbe909100ed941d196a00ef5cc3.svg",
     "main.2cf20aca.css.map": "/tight-angling/static/css/main.2cf20aca.css.map",
-    "main.5a025d04.js.map": "/tight-angling/static/js/main.5a025d04.js.map"
+    "main.36904856.js.map": "/tight-angling/static/js/main.36904856.js.map"
   },
   "entrypoints": [
     "static/css/main.2cf20aca.css",
-    "static/js/main.5a025d04.js"
+    "static/js/main.36904856.js"
   ]
 }
